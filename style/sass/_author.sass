@@ -11,36 +11,66 @@ html, body
 
 .container
 	width: 1200px
-	h1, h2
+	h1
 		text-align: center
 		margin: 5% 0 2% 0
+	h2
+		text-align: center
+		margin: 0 0 2% 0
+
 	ul.tasks
 		list-style: none
 		margin: 2% auto 5%
-		width: 860px
+		width: 820px
 		li
 			padding: 2% 0 0 8%
 			input
-				width: 650px
+				width: 600px
 				height: 55px
 				border: 0
-				border-bottom: 2px solid black
-				font-size: 2.5rem
-				padding: 1.5% 3% 
+				// border-bottom: 2px solid black
+				font-size: 1.8rem
+				padding: 1% 3% 
 				background: rgba(250,241,218,0.2)
+				box-shadow: 1px 3px 6px rgba(0,0,0,.25)
+			input.day
+				text-align: center
+				font-weight: bold
+				background: none
+				box-shadow: none
+				color: rgb(30,144,255)	
+				border: 2px solid #1E90FF
+
 			.task1Img, .task2Img, .task3Img
 				width: 7%
 				height: 7%
 				margin-left: 3%
 				padding-bottom: 2%
 				display: none
-	h1.complete
-		margin: 1% 0 1% 0
+				cursor: pointer
 
-	h1.arrow
-		margin-bottom: 1500px
-		font-size: 3.5rem
-		margin-top: 0
+	.completedTasks
+		width: 100%
+		height: 800px
+		ul.complete
+			list-style: none
+			margin: 2% auto 5%
+			width: 860px
+			li
+				font-size: 2.5rem
+				text-align: center
+				padding-right: 50px
+		h1.complete
+			margin: 1% 0 1% 0
+		.scroll 
+			margin: 0 auto 8%
+			width: 375px
+		img
+			width: 100%
+			height: 100%
+
+		
+
 
 
 			

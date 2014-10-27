@@ -99,6 +99,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/scroll-down.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 6191,
+		"inputAbbreviatedPath": "\/img\/scroll-down.png",
+		"outputAbbreviatedPath": "\/img\/scroll-down.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/tick.png": {
 		"fileType": 32768,
 		"ignore": 0,

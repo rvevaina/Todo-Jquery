@@ -20,11 +20,15 @@ textBox.on("keyup", function(e){
 	// }
 });
 
+var tick1 = $("img.task1Img");
+var tick2 = $("img.task2Img");
+var tick3 = $("img.task3Img");
+
 $("input.first").on("blur", function(){ //when leaving input, add tick mark 
 	if ($("input.first").val() !== "") {
-		$("img.task1Img").fadeIn(1100);
+		tick1.fadeIn(1100);
 	} else {
-		$("img.task1Img").fadeOut(800);
+		tick1.fadeOut(800);
 		
 	}
 });
@@ -38,7 +42,7 @@ $("input.second").on("blur", function(){ //when leaving input, add tick mark
 	}
 });
 
-$("input.three").on("blur", function(){ //when leaving input, add tick mark 
+$("input.third").on("blur", function(){ //when leaving input, add tick mark 
 	if ($("input.third").val() !== "") {
 		$("img.task3Img").fadeIn(1200);
 	} else {
@@ -47,8 +51,25 @@ $("input.three").on("blur", function(){ //when leaving input, add tick mark
 	}
 });
 
-$("h1.arrow").click(function(){
-	$('html,body').animate({scrollTop:500});	
+tick1.on("click", function(){
+	$("ul.complete").append("<li>" + $("input.first").val() + "</li>");
+	// $('input.first p').wrap("<strike>");
+	tick1.fadeOut(500);
+});
+
+tick2.on("click", function(){
+	$("ul.complete").append("<li>" + $("input.second").val() + "</li>");
+	tick2.fadeOut(500);
+});
+
+tick3.on("click", function(){
+	$("ul.complete").append("<li>" + $("input.third").val() + "</li>");
+	tick3.fadeOut(500);
+});
+
+
+$(".scroll").click(function(){
+	$('html,body').animate({scrollTop:450});	
 });
 
 }); //document ready
