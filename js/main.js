@@ -2,34 +2,60 @@ $(document).ready(function() {
 
 var textBox = $('input[type="text"]');
 
+//Move from one inputbox to the next on enter
+
 textBox.on("keyup", function(e){
 	if (e.keyCode === 13) {
 		var currentBox = textBox.index(this);
-		if (textBox[currentBox + 1] !== null){
-		var nextBox = textBox[currentBox + 1];	
-		nextBox.focus();
-        nextBox.select();
+		var nextBox = textBox[currentBox + 1];
+
+		if (!!nextBox){
+		// $('input:last-child').blur();
+
+			nextBox.focus();
+	        nextBox.select();
         event.preventDefault();
         return false; 		
+		}
+		else {
+			$(this).blur();
 		} 
 	}
-	// var lastBox = textBox.length;
-	// console.log(lastBox)
-	// if (nextBox = lastBox){
-	// lastBox.blur();
-	// }
 });
+
+// Date and time on top
+
+var today = new Date();
+
+var date = today.getDate();
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+var n = month[today.getMonth()];
+var year = today.getFullYear(); 
+
+$("input.day").val(date + " " + n + " " + year);
 
 var tick1 = $("img.task1Img");
 var tick2 = $("img.task2Img");
 var tick3 = $("img.task3Img");
 
+//Tick animation
 $("input.first").on("blur", function(){ //when leaving input, add tick mark 
 	if ($("input.first").val() !== "") {
 		tick1.fadeIn(1100);
 	} else {
-		tick1.fadeOut(800);
-		
+		tick1.fadeOut(800);	
 	}
 });
 
@@ -50,27 +76,37 @@ $("input.third").on("blur", function(){ //when leaving input, add tick mark
 		
 	}
 });
-
+//Adding tasks to completed tasks
 tick1.on("click", function(){
 	$("ul.complete").append("<li>" + $("input.first").val() + "</li>");
-	// $('input.first p').wrap("<strike>");
+	//Strikethrough completed tasks
+  	$('#line1').animateStrikethrough(1200, function () {
+  	});
 	tick1.fadeOut(500);
+	$("input.first").addClass("hide");
 });
 
 tick2.on("click", function(){
 	$("ul.complete").append("<li>" + $("input.second").val() + "</li>");
+	$('#line2').animateStrikethrough(1200, function () {
+  	});
 	tick2.fadeOut(500);
+	$("input.second").addClass("hide");
 });
 
 tick3.on("click", function(){
 	$("ul.complete").append("<li>" + $("input.third").val() + "</li>");
+	$('#line3').animateStrikethrough(1200, function () {
+  	});
 	tick3.fadeOut(500);
+	$("input.third").addClass("hide");
 });
 
-
+//Scroll down on arrow click
 $(".scroll").click(function(){
 	$('html,body').animate({scrollTop:450});	
 });
+
 
 }); //document ready
 

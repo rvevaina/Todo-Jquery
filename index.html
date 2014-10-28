@@ -18,7 +18,7 @@
         
 <div class="container">
     
-    <h1>What To Do?</h1>
+   <h1>What To Do?</h1>
     <h2>List your top 3 tasks of the day</h2>
         
     
@@ -29,15 +29,15 @@
             </li>
 
             <li class ="task1">
-                <input class ="first" type="text">
+                <input class ="first" id ="line1" type="text">
                 <img class='task1Img' src='img/tick.png'/>
             </li>
             <li>
-                <input class ="second"type="text"> 
+                <input class ="second" id ="line2" type="text"> 
                 <img class='task2Img' src='img/tick.png'/>
             </li>
             <li>
-                <input class ="third"type="text"> 
+                <input class ="third" id ="line3" type="text"> 
                 <img class='task3Img' src='img/tick.png'/>
             </li>
         </ul>
@@ -59,12 +59,9 @@
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+         <script src="js/jquery.animated.linethrough.js" type="text/javascript" charset="utf-8"></script>
+        
 
-        <script>
-            var _gaq=[['_setAccount','UA-*******'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+    
     </body>
 </html>

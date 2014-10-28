@@ -7,10 +7,15 @@ html, body
 	background: url(../../img/crossword.png)
 	-moz-osx-font-smoothing: grayscale
 
+.strike
+	text-decoration: line-through 
+	text-decoration-style: wavy
+	text-decoration-color: blue
 
 
 .container
 	width: 1200px
+	margin: auto
 	h1
 		text-align: center
 		margin: 5% 0 2% 0
@@ -33,6 +38,10 @@ html, body
 				padding: 1% 3% 
 				background: rgba(250,241,218,0.2)
 				box-shadow: 1px 3px 6px rgba(0,0,0,.25)
+				&.hide
+					background: none
+					box-shadow: none
+					@include transition(all, 1s, ease, 0s)
 			input.day
 				text-align: center
 				font-weight: bold
@@ -40,6 +49,7 @@ html, body
 				box-shadow: none
 				color: rgb(30,144,255)	
 				border: 2px solid #1E90FF
+				outline: 0
 
 			.task1Img, .task2Img, .task3Img
 				width: 7%
@@ -68,6 +78,7 @@ html, body
 		img
 			width: 100%
 			height: 100%
+			cursor: pointer
 
 		
 
