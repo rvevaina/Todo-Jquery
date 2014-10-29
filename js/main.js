@@ -41,10 +41,13 @@ month[8] = "September";
 month[9] = "October";
 month[10] = "November";
 month[11] = "December";
-var n = month[today.getMonth()];
+var m = month[today.getMonth()];
 var year = today.getFullYear(); 
+var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var day = days[today.getDay()];
+ 
 
-$("input.day").val(date + " " + n + " " + year);
+$("input.day").val(day + "  " + date + "th" + " " + m + " " + year);
 
 var tick1 = $("img.task1Img");
 var tick2 = $("img.task2Img");
@@ -83,7 +86,15 @@ tick1.on("click", function(){
   	$('#line1').animateStrikethrough(1200, function () {
   	});
 	tick1.fadeOut(500);
+	$(".close1").fadeIn(900);
 	$("input.first").addClass("hide");
+});
+
+//Clearing feilds on x click
+$(".close1").on("click", function(){
+	$(this).fadeOut(600);
+	$("input.first").val('');
+	$("input.first").removeClass("hide");
 });
 
 tick2.on("click", function(){
