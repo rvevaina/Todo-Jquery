@@ -45,9 +45,22 @@ var m = month[today.getMonth()];
 var year = today.getFullYear(); 
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var day = days[today.getDay()];
- 
 
-$("input.day").val(day + "  " + date + "th" + " " + m + " " + year);
+function suffix(date) {
+	var j = date % 10,
+	k = date % 100;
+	if (j === 1 && k !== 11) {
+		return date + "st";
+	} else if (j === 2 && k !== 12) {
+		return date + "nd";
+	} else if (j === 3 && k !== 13) {
+		return date + "rd";
+	} else {
+	return date + "th";
+	}
+}
+
+$("input.day").val(day + "  " + suffix(date) + " " + m + " " + year);
 
 var tick1 = $("img.task1Img");
 var tick2 = $("img.task2Img");
@@ -90,18 +103,13 @@ tick1.on("click", function(){
 	$("input.first").addClass("hide");
 });
 
-//Clearing feilds on x click
-$(".close1").on("click", function(){
-	$(this).fadeOut(600);
-	$("input.first").val('');
-	$("input.first").removeClass("hide");
-});
 
 tick2.on("click", function(){
 	$("ul.complete").append("<li>" + $("input.second").val() + "</li>");
 	$('#line2').animateStrikethrough(1200, function () {
   	});
 	tick2.fadeOut(500);
+	$(".close2").fadeIn(900);
 	$("input.second").addClass("hide");
 });
 
@@ -110,7 +118,27 @@ tick3.on("click", function(){
 	$('#line3').animateStrikethrough(1200, function () {
   	});
 	tick3.fadeOut(500);
+	$(".close3").fadeIn(900);
 	$("input.third").addClass("hide");
+});
+
+//Clearing feilds on x click
+$(".close1").on("click", function(){
+	$(this).fadeOut(600);
+	$("input.first").val('');
+	$("input.first").removeClass("hide");
+});
+
+$(".close2").on("click", function(){
+	$(this).fadeOut(600);
+	$("input.second").val('');
+	$("input.second").removeClass("hide");
+});
+
+$(".close3").on("click", function(){
+	$(this).fadeOut(600);
+	$("input.third").val('');
+	$("input.third").removeClass("hide");
 });
 
 //Scroll down on arrow click
@@ -118,8 +146,22 @@ $(".scroll").click(function(){
 	$('html,body').animate({scrollTop:450});	
 });
 
+// tick1.on("click", function(){
+// $.jStorage.set('key', $("input.first").val());
+// var value = $.jStorage.get('key');
+// console.log(value);
+// $("ul.complete").append(value)
+// });
+
+//video
+
+if ($("input.first, input.second, input.third").click()){
+	$(".video").addClass("slide");
+}
+
 
 }); //document ready
+
 
 $(window).load(function() { 
 	
