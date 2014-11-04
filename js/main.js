@@ -26,7 +26,6 @@ textBox.on("keyup", function(e){
 // Date and time on top
 
 var today = new Date();
-var count = 0;
 var date = today.getDate();
 var month = new Array();
 month[0] = "January";
@@ -70,12 +69,13 @@ var $input1 = $("input.first");
 var $input2 = $("input.second");
 var $input3 = $("input.third");
 
+var count = 0;
 //Tick animation
 $input1.on("blur", function(){ //when leaving input, add tick mark 
 	if ($input1.val() !== "") {
 		tick1.fadeIn(1100);
 	} else {
-		tick1.fadeOut(800);	
+		tick1.fadeOut(700);	
 	}
 });
 
@@ -83,7 +83,7 @@ $input2.on("blur", function(){ //when leaving input, add tick mark
 	if ($input2.val() !== "") {
 		tick2.fadeIn(1200);
 	} else {
-		tick2.fadeOut(900);
+		tick2.fadeOut(700);
 		
 	}
 });
@@ -92,10 +92,12 @@ $input3.on("blur", function(){ //when leaving input, add tick mark
 	if ($input3.val() !== "") {
 		tick3.fadeIn(1200);
 	} else {
-		tick3.fadeOut(900);
+		tick3.fadeOut(700);
 		
 	}
 });
+var $closeComplete = $("img.completedClose");
+
 //Adding tasks to completed tasks
 tick1.on("click", function(){
 	var todo = $("input.first").val();
@@ -108,12 +110,14 @@ tick1.on("click", function(){
 	$input1.addClass("hide");
 	count++;
 	showVideo(); // show video?
-
 	localStorage.completed = localStorage.completed + "," + todo;
+	$closeComplete.fadeIn(800);
+
 });
 
 
 tick2.on("click", function(){
+	var todo = $("input.second").val();
 	$("ul.complete").append("<li>" + $("input.second").val() + "</li>");
 	$('#line2').animateStrikethrough(1200, function () {
   	});
@@ -122,9 +126,12 @@ tick2.on("click", function(){
 	$input2.addClass("hide");
 	count++;
 	showVideo(); // show video?
+	localStorage.completed = localStorage.completed + "," + todo;
+	$closeComplete.fadeIn(800);
 });
 
 tick3.on("click", function(){
+	var todo = $("input.third").val();
 	$("ul.complete").append("<li>" + $("input.third").val() + "</li>");
 	$('#line3').animateStrikethrough(1200, function () {
   	});
@@ -133,6 +140,8 @@ tick3.on("click", function(){
 	$input3.addClass("hide");
 	count++;
 	showVideo(); // show video?
+	localStorage.completed = localStorage.completed + "," + todo;
+	$closeComplete.fadeIn(800);
 });
 
 //Clearing feilds on x click
@@ -160,27 +169,34 @@ var showVideo = function() {
 	if(count >= 3) {
 		$(".overlay").addClass("slide");
 	}
-}
-
-// tick1.on("click", function(){
-// $.jStorage.set('key', $("input.first").val());
-// var value = $.jStorage.get('key');
-// console.log(value);
-// $("ul.complete").append(value)
-// });
-
-//video
-
-// if ( tick1 && tick2, tick3).click() ){
-// 	console.log ("click")
-// 	$(".video").addClass("slide");
-// }
+};
 
 	var completed = localStorage.completed.split(',');
 
-	for (var i = 0; i < completed.length; i++) {
+	for (var i = 1; i < completed.length; i++) {
 		$('ul.complete').append('<li>'+completed[i]+'</li>');
-	};
+	}
+
+
+//clear completed
+
+$closeComplete.click(function(){
+	$("ul.complete").empty();
+	$closeComplete.fadeOut(300);
+	localStorage.clear();
+});
+
+if ($("ul.complete") !== (" ")){
+	$closeComplete.fadeIn(800);
+} 
+
+//close video
+	
+	$("img.videoClose").click(function(){
+		console.log("click")
+		$(".overlay").removeClass("slide");
+	});
+	
 
 }); //document ready
 

@@ -77,34 +77,59 @@ html, body
 		ul.complete
 			list-style: none
 			margin: 2% auto 5%
-			width: 825px
+			width: 725px
+			border: 1px dotted grey
+			position: relative
 			li
 				font-size: 2.5rem
 				text-align: center
 				padding-right: 50px
+				padding-bottom: 1%
 		h1.complete
 			margin: 0
 		.scroll 
-			margin: 0 auto 8%
+			margin: 0 auto 5%
 			width: 330px
-		img
-			width: 100%
-			height: 100%
+			img
+				width: 100%
+				height: 100%
+				cursor: pointer
+		img.completedClose
+			position: absolute
+			right: -20px
+			top: -20px 
 			cursor: pointer
-
+			display: none
 .overlay
 	position: absolute
 	display: block
 	width: 100%
 	height: 100%
 	background: rgba(0,0,0,0.85)
-	top: -100%
+	top: -200%
 	left: 0
+	h2
+		color: white
+		text-align: center
+		margin-top: 5%
+		font-size: 6rem
+	p 
+		color: white
+		text-align: center
+		font-size: 2rem
+
 	.video
-		margin: 10% 26%
+		margin: 4% 26%
+		position: relative
+		img.videoClose
+			position: absolute
+			left: -20px
+			top: -20px 
+			cursor: pointer
 	&.slide
 		top: 0
 		left: 0
+		@include transition(all, 1s, ease, 0s)
 			
 				
 
